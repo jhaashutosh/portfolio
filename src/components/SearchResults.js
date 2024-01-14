@@ -15,6 +15,7 @@ const SearchResultsBar = styled.div`
   padding: 20px;
   gap: 24px;
   justify-content: space-between;
+  border-bottom: 1px solid #dfe1e5;
 `;
 
 const SignInButton = styled.button`
@@ -55,13 +56,19 @@ const SearchResults = () => {
       <Bookmarks />
       <SearchResultsBar>
         <div style={{ width: "50%", display: "flex", gap: "24px" }}>
-          <span style={{ fontSize: "28px" }}>Ashutosh</span>
+          <span
+            style={{ fontSize: "28px", fontWeight: "600", color: "#5f6368" }}
+          >
+            Google
+          </span>
           <SearchBar backgroundColor="#f1f3f4" />
         </div>
         <SignInButton>Sign in</SignInButton>
       </SearchResultsBar>
       <SearchStats />
-      <div className="search-results">{renderResults()}</div>
+      <div className="search-results" style={{ padding: "20px 72px" }}>
+        {renderResults()}
+      </div>
     </div>
   );
 };

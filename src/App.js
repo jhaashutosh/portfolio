@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import SearchResults from "./components/SearchResults";
 import FullscreenPrompt from "./components/FullscreenPrompt";
-import Footer from "./components/Footer";
 import TabsBar from "./components/TabsBar";
 import "./App.css";
 
@@ -23,7 +22,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchResults />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );
