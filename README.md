@@ -62,7 +62,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Name - jhaashutosh58@gmail.com
 
 Project Link: [https://github.com/jhaashutosh/portfolio](https://github.com/jhaashutosh/portfolio)
-
-```
-
-```
