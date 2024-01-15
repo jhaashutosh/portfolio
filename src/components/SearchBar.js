@@ -18,11 +18,11 @@ const StyledForm = styled.form`
   border: 1px solid #dfe1e5;
   padding: 10px;
   padding-left: 20px;
-  border-radius: ${({ isMenuOpen }) => (isMenuOpen ? "24px 24px 0 0" : "24px")};
-  /* box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28); */
+  border-radius: ${({ $isMenuOpen }) =>
+    $isMenuOpen ? "24px 24px 0 0" : "24px"};
   width: 100%;
-  border-bottom: ${({ isMenuOpen }) =>
-    isMenuOpen ? "none" : "1px solid #dfe1e5"};
+  border-bottom: ${({ $isMenuOpen }) =>
+    $isMenuOpen ? "none" : "1px solid #dfe1e5"};
 `;
 
 const StyledInput = styled.input`
@@ -60,7 +60,6 @@ const SuggestionsBox = styled.div`
   left: 0;
   right: 0;
   background: white;
-  /* box-shadow: 0 4px 6px rgba(32, 33, 36, 0.28); */
   border: 1px solid #dfe1e5;
   border-radius: 0 0 24px 24px;
   border-top: none;
@@ -69,7 +68,9 @@ const SuggestionsBox = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0;
-  margin-top: -5px; // to overlap border of the search bar
+  margin-top: -5px;
+  max-height: 200px;
+  overflow-y: auto;
 `;
 
 const SuggestionItem = styled.div`
@@ -86,29 +87,32 @@ const SuggestionItem = styled.div`
 `;
 
 // SearchBar component
-const SearchBar = (backgroundColor) => {
+const SearchBar = ({ backgroundColor, showURL, urlColor }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
-  const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
-  const suggestions = [
+  const [suggestions, setSuggestions] = useState([
     "education",
-    "summary",
     "projects",
     "career",
     "achievements",
-  ];
+  ]);
   const isMenuOpen = showSuggestions && suggestions.length > 0;
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      setDebouncedTerm(searchTerm);
+      const filteredSuggestions = suggestions.filter((suggestion) =>
+        suggestion.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      if (searchTerm.trim() === "")
+        setSuggestions(["education", "projects", "career", "achievements"]);
+      else setSuggestions(filteredSuggestions);
     }, 300); // 300ms debounce time
 
     return () => {
       clearTimeout(handler);
     };
-  }, [searchTerm]);
+  }, [searchTerm, suggestions]);
 
   const initiateSearch = (searchValue) => {
     searchValue = searchValue.toLowerCase();
@@ -116,7 +120,6 @@ const SearchBar = (backgroundColor) => {
       searchValue === "career" ||
       searchValue === "achievements" ||
       searchValue === "projects" ||
-      searchValue === "summary" ||
       searchValue === "education"
     ) {
       navigate(`/search?query=${encodeURIComponent(searchValue)}`);
@@ -127,7 +130,7 @@ const SearchBar = (backgroundColor) => {
 
   const handleSearch = (e) => {
     if (e) e.preventDefault();
-    initiateSearch(debouncedTerm);
+    initiateSearch(searchTerm);
   };
 
   const handleStartSpeechRecognition = () => {
@@ -140,7 +143,7 @@ const SearchBar = (backgroundColor) => {
 
       recognition.onresult = (event) => {
         const speechResult = event.results[0][0].transcript;
-        setSearchTerm(speechResult); // Update searchTerm with the speech result
+        setSearchTerm(speechResult);
       };
 
       recognition.onerror = (event) => {
@@ -155,18 +158,27 @@ const SearchBar = (backgroundColor) => {
     setSearchTerm(suggestion);
     setShowSuggestions(false);
     navigate(`/search?query=${encodeURIComponent(suggestion)}`);
+    if (showURL) {
+      setSearchTerm(
+        `https://google.com/search?query=${encodeURIComponent(suggestion)}`
+      );
+    }
   };
 
   return (
     <SearchWrapper>
       <StyledForm
-        style={backgroundColor}
-        isMenuOpen={isMenuOpen}
+        style={{ backgroundColor: backgroundColor, color: urlColor }}
+        $isMenuOpen={isMenuOpen}
         onSubmit={handleSearch}
       >
         <SearchIcon />
         <StyledInput
-          style={backgroundColor}
+          style={{
+            backgroundColor: backgroundColor,
+            color: urlColor,
+            fontSize: showURL ? "12px" : "16px",
+          }}
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}

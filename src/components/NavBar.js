@@ -35,7 +35,11 @@ const NavBar = () => {
     <NavBarContainer>
       <NavigationButtons />
       <SearchBarContainer>
-        <SearchBar backgroundColor="#f1f3f4" />
+        <SearchBar
+          backgroundColor="#f1f3f4"
+          showURL={true}
+          urlColor="#70757a"
+        />
       </SearchBarContainer>
       <ProfileIcon>
         <FaUser color="white" />

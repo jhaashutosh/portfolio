@@ -6,6 +6,7 @@ import PROJECT_LOGO_1 from "../../assets/portfolio.png";
 
 const ProjectsContainer = styled.div`
   padding: 10px 20px;
+  width: 90%;
 `;
 
 const Heading = styled.span`
@@ -76,10 +77,10 @@ const HighlightSideContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 50%;
+  height: max-content;
   align-items: center;
   border: 1px solid #dfe1e5;
-  width: 30%;
+  width: 80%;
   border-radius: 4px;
 `;
 
@@ -94,10 +95,8 @@ const ProjectLogo = styled.img`
 const ProjectLink = styled.a`
   color: #007bff;
   text-decoration: none;
-  font-size: 14px;
-  &:hover {
-    text-decoration: underline;
-  }
+  font-size: 16px;
+  text-decoration: underline;
 `;
 
 const HighlightContentIMAGE = styled.img`
@@ -168,7 +167,9 @@ asynchronous JavaScript, DOM manipulations, etc.`,
   };
 
   return (
-    <div style={{ display: "flex", gap: "24px" }}>
+    <div
+      style={{ display: "grid", gap: "100px", gridTemplateColumns: "3fr 2fr" }}
+    >
       <ProjectsContainer>
         <HighlightContent>
           <Highlight>
@@ -209,10 +210,16 @@ asynchronous JavaScript, DOM manipulations, etc.`,
                 </ProjectLink>
               </div>
             </ResultHeader>
-            <ResultSnippet>
+            <ResultSnippet
+              style={{ flexDirection: "row", justifyContent: "flex-start" }}
+            >
               {project.smallDescription}
               <ExpandIcon
-                style={{ cursor: "pointer", marginLeft: "5px" }}
+                style={{
+                  cursor: "pointer",
+                  marginLeft: "5px",
+                  fontSize: "24px",
+                }}
                 onClick={() => toggleDescription(index)}
               />
             </ResultSnippet>

@@ -3,7 +3,6 @@ import Career from "./portfolioComponent.js/Career";
 import Achievements from "./portfolioComponent.js/Achievements";
 import Projects from "./portfolioComponent.js/Projects";
 import Education from "./portfolioComponent.js/Education";
-import Summary from "./portfolioComponent.js/Summary";
 import NavBar from "./NavBar";
 import SearchBar from "./SearchBar";
 import Bookmarks from "./Bookmarks";
@@ -21,6 +20,7 @@ const SearchResultsBar = styled.div`
 const SignInButton = styled.button`
   padding: 2px 20px;
   text-align: center;
+  cursor: not-allowed;
   font-size: 14px;
   font-weight: 500;
   border-radius: 4px;
@@ -43,8 +43,6 @@ const SearchResults = () => {
         return <Projects />;
       case "education":
         return <Education />;
-      case "summary":
-        return <Summary />;
       default:
         return <div>Showing all results</div>;
     }
@@ -56,11 +54,17 @@ const SearchResults = () => {
       <Bookmarks />
       <SearchResultsBar>
         <div style={{ width: "50%", display: "flex", gap: "24px" }}>
-          <span
-            style={{ fontSize: "28px", fontWeight: "600", color: "#5f6368" }}
+          <a
+            href="http://localhost:3000/"
+            style={{
+              fontSize: "28px",
+              fontWeight: "600",
+              color: "#5f6368",
+              textDecoration: "none",
+            }}
           >
             Google
-          </span>
+          </a>
           <SearchBar backgroundColor="#f1f3f4" />
         </div>
         <SignInButton>Sign in</SignInButton>

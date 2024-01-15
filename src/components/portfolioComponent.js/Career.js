@@ -41,10 +41,10 @@ const HighlightSideContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 50%;
+  height: max-content;
   align-items: center;
   border: 1px solid #dfe1e5;
-  width: 30%;
+  width: 80%;
   border-radius: 4px;
 `;
 
@@ -174,7 +174,9 @@ validating routes and requests.`,
   };
 
   return (
-    <div style={{ display: "flex", gap: "24px" }}>
+    <div
+      style={{ display: "grid", gap: "100px", gridTemplateColumns: "3fr 2fr" }}
+    >
       <CareerContainer>
         <HighlightContent>
           <Highlight>

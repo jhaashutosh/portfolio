@@ -9,7 +9,6 @@ const TabsBarContainer = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 0;
-  /* border-bottom: 1px solid #e0e0e0; */
   cursor: not-allowed;
 `;
 
@@ -17,24 +16,24 @@ const Tab = styled.div`
   background-color: white;
   padding: 6px 24px;
   gap: 6px;
-  border-radius: 8px 18px 0 0;
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); */
+  border-radius: 8px 8px 0 0; // Rounded top and flat bottom
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
   height: 28px;
+  margin-right: -1px; // This helps the tabs blend together visually
 `;
 
 const AddTabButton = styled.button`
-  background: none;
   border: none;
-  padding: 0 8px;
+  padding: 6px 8px; // Adjust to match the tab's padding
   cursor: not-allowed;
   font-size: 20px;
   display: flex;
   align-items: center;
   color: #5f6368;
+  border-radius: 0 8px 0 0; // Only round the top right corner
 `;
 
 const TabsBar = () => {
@@ -44,14 +43,7 @@ const TabsBar = () => {
         <FaGoogle fontSize={12} />
         Home Tab
       </Tab>
-      <Tab
-        style={{
-          backgroundColor: "#f1f3f4",
-          marginLeft: "-5px",
-          paddingLeft: "10px",
-          borderRadius: "8px 0 0 8px",
-        }}
-      >
+      <Tab style={{ backgroundColor: "#f1f3f4" }}>
         <AddTabButton>
           <FiPlus />
         </AddTabButton>

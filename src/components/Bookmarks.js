@@ -34,9 +34,7 @@ const Bookmarks = () => {
       <Bookmark onClick={() => handleNavigate("achievements")}>
         Achievements
       </Bookmark>
-      <Bookmark onClick={() => handleNavigate("/education")}>
-        Education
-      </Bookmark>
+      <Bookmark onClick={() => handleNavigate("education")}>Education</Bookmark>
     </BookmarksContainer>
   );
 };

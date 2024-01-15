@@ -16,11 +16,12 @@ const Backdrop = styled.div`
 
 const Modal = styled.div`
   background: white;
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1001;
   text-align: center;
+  font-family: "Roboto", sans-serif;
 `;
 
 const Button = styled.button`
@@ -34,10 +35,13 @@ const Button = styled.button`
   margin: 15px 2px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: #e0e0e0;
+  color: #000;
 
   &:hover {
-    opacity: 0.9;
+    background-color: #d5d5d5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -50,7 +54,7 @@ const FullscreenButton = styled(Button)`
 `;
 
 const CancelButton = styled(Button)`
-  background-color: #f44336;
+  background-color: #ff474c;
 
   &:hover {
     background-color: #d32f2f;
@@ -67,6 +71,8 @@ const FullscreenPrompt = ({ onClose }) => {
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen();
     } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) {
       document.documentElement.msRequestFullscreen();
     }
     onClose(); // Close the popup after going fullscreen
@@ -75,8 +81,8 @@ const FullscreenPrompt = ({ onClose }) => {
   return (
     <Backdrop>
       <Modal>
-        <h2>Enhance Your Experience</h2>
-        <p>For a better experience, go full-screen mode.</p>
+        <p style={{ fontSize: "24px" }}>Enhance Your Experience</p>
+        <p>Go full-screen mode.</p>
         <ButtonContainer>
           <CancelButton onClick={onClose}>Cancel</CancelButton>
           <FullscreenButton onClick={goFullScreen}>
