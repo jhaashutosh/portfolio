@@ -3,6 +3,7 @@ import Career from "./portfolioComponent.js/Career";
 import Achievements from "./portfolioComponent.js/Achievements";
 import Projects from "./portfolioComponent.js/Projects";
 import Education from "./portfolioComponent.js/Education";
+import About from "./portfolioComponent.js/About";
 import NavBar from "./NavBar";
 import SearchBar from "./SearchBar";
 import Bookmarks from "./Bookmarks";
@@ -74,6 +75,8 @@ const SearchResults = () => {
         return <Projects />;
       case "education":
         return <Education />;
+      case "about":
+        return <About />;
       default:
         return <div>Showing all results</div>;
     }

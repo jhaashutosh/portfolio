@@ -122,6 +122,7 @@ const SearchBar = ({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
   const [suggestions, setSuggestions] = useState([
+    "about",
     "education",
     "projects",
     "career",
@@ -137,7 +138,13 @@ const SearchBar = ({
         suggestion?.toLowerCase().includes(searchTerm?.toLowerCase())
       );
       if (searchTerm.trim() === "")
-        setSuggestions(["education", "projects", "career", "achievements"]);
+        setSuggestions([
+          "about",
+          "education",
+          "projects",
+          "career",
+          "achievements",
+        ]);
       else setSuggestions(filteredSuggestions);
     }, 300); // 300ms debounce time
 

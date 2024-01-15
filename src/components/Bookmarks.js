@@ -40,6 +40,7 @@ const Bookmarks = () => {
 
   return (
     <BookmarksContainer>
+      <Bookmark onClick={() => handleNavigate("about")}>About</Bookmark>
       <Bookmark onClick={() => handleNavigate("career")}>Career</Bookmark>
       <Bookmark onClick={() => handleNavigate("projects")}>Projects</Bookmark>
       <Bookmark onClick={() => handleNavigate("achievements")}>
