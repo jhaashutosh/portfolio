@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Google Themed React Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a personal portfolio website built with React, showcasing a unique Google-themed design. It features various sections including About, Careers, Projects, Achievements, and Education, each designed to mirror the aesthetic and functionality of Google's search results page.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [About](#about)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## About
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This portfolio is a React-based application designed to present my professional journey, achievements, and skills in a layout reminiscent of Google's search results. The idea is to offer a familiar and intuitive user experience while showcasing my personal and professional milestones.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Google Search Theme:** Each section of the portfolio mimics the style of Google's search result pages, providing a unique and engaging user experience.
+- **Responsive Design:** Ensures a seamless experience across various devices and screen sizes.
+- **Expandable Sections:** Interactive elements in the Careers, Projects, and Achievements sections allow users to expand entries for more detailed information.
+- **Elegant Full-Screen Modals:** Used for prompting actions like fullscreen mode, enhancing the user interaction.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+To get a local copy up and running, follow these simple steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/jhaashutosh/portfolio.git
+cd portfolio
+npm install
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After installation, the application can be accessed at `http://localhost:3000`. Navigate through various sections to explore the content:
 
-### `npm run eject`
+- **About:** Get to know more about me and my professional journey.
+- **Careers:** A timeline of my professional experiences and roles.
+- **Projects:** A showcase of my projects with detailed descriptions and technologies used.
+- **Achievements:** Highlighting key accomplishments and recognitions throughout my career.
+- **Education:** Information about my educational background and qualifications.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contributing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Fork the Project
+- Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+- Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+- Push to the Branch (`git push origin feature/AmazingFeature`)
+- Open a Pull Request
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## License
 
-## Learn More
+Distributed under the MIT License. See `LICENSE` for more information.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Name - jhaashutosh58@gmail.com
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Project Link: [https://github.com/jhaashutosh/portfolio](https://github.com/jhaashutosh/portfolio)
+```
