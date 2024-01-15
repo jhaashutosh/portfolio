@@ -91,8 +91,8 @@ const SearchBar = ({
   backgroundColor,
   showURL,
   urlColor,
-  searchTerm,
-  setSearchTerm,
+  searchTerm = "",
+  setSearchTerm = () => {},
 }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
@@ -107,7 +107,7 @@ const SearchBar = ({
   useEffect(() => {
     const handler = setTimeout(() => {
       const filteredSuggestions = suggestions.filter((suggestion) =>
-        suggestion.toLowerCase().includes(searchTerm.toLowerCase())
+        suggestion?.toLowerCase().includes(searchTerm?.toLowerCase())
       );
       if (searchTerm.trim() === "")
         setSuggestions(["education", "projects", "career", "achievements"]);
@@ -138,8 +138,8 @@ const SearchBar = ({
   };
 
   const displayedValue = showURL
-    ? `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`
-    : searchTerm;
+    ? `https://www.google.com/search?q=${encodeURIComponent(searchTerm || "")}`
+    : searchTerm || "";
 
   const handleSearch = (e) => {
     if (e) e.preventDefault();
