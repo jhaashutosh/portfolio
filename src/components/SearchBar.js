@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FiSearch, FiClock, FiMic } from "react-icons/fi";
-import { FiMicOff } from "react-icons/fi";
 
 const SearchWrapper = styled.div`
   display: flex;
