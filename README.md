@@ -31,6 +31,7 @@ git clone https://github.com/jhaashutosh/portfolio.git
 cd portfolio
 npm install
 npm start
+```
 
 ## Usage
 
@@ -61,4 +62,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Name - jhaashutosh58@gmail.com
 
 Project Link: [https://github.com/jhaashutosh/portfolio](https://github.com/jhaashutosh/portfolio)
+
+```
+
 ```
