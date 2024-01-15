@@ -30,7 +30,7 @@ const ProfileIcon = styled.div`
   background-size: cover;
 `;
 
-const NavBar = () => {
+const NavBar = ({ searchTerm, setSearchTerm }) => {
   return (
     <NavBarContainer>
       <NavigationButtons />
@@ -39,6 +39,8 @@ const NavBar = () => {
           backgroundColor="#f1f3f4"
           showURL={true}
           urlColor="#70757a"
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
         />
       </SearchBarContainer>
       <ProfileIcon>

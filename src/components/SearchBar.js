@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { FiSearch, FiClock, FiMic } from "react-icons/fi"; // Import the search icon from react-icons
+import { FiSearch, FiClock, FiMic } from "react-icons/fi";
 
-// Styled components
 const SearchWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -28,7 +27,7 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   width: 100%;
   border: none;
-  padding-left: 35px; // Make room for the search icon
+  padding-left: 35px;
   font-size: 16px;
   &:focus {
     outline: none;
@@ -38,19 +37,20 @@ const StyledInput = styled.input`
 const MicIcon = styled(FiMic)`
   position: absolute;
   font-size: 20px;
-  right: 20px; // Adjust the position to align with the input
+  right: 20px;
   cursor: pointer;
 `;
 
 const SearchIcon = styled(FiSearch)`
   position: absolute;
   font-size: 20px;
-  left: 20px; // Adjust the position to align with the input
+  left: 20px;
 `;
 
 const SuggestionIcon = styled(FiClock)`
   font-size: 16px;
-  margin-right: 10px; // Add some spacing between the icon and text
+  margin-right: 10px;
+  margin-left: 20px;
 `;
 
 const SuggestionsBox = styled.div`
@@ -66,29 +66,34 @@ const SuggestionsBox = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
   padding: 0;
   margin-top: -5px;
   max-height: 200px;
-  overflow-y: auto;
 `;
 
 const SuggestionItem = styled.div`
-  padding: 10px 20px;
-  width: 92%;
+  padding: 10px 0px;
+  width: 100%;
   text-align: left;
   cursor: pointer;
   display: flex;
   gap: 7px;
-  align-items: center; // Align items vertically in the suggestion item
+  align-items: center;
   &:hover {
     background-color: #eeeeee;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
   }
 `;
 
 // SearchBar component
-const SearchBar = ({ backgroundColor, showURL, urlColor }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+const SearchBar = ({
+  backgroundColor,
+  showURL,
+  urlColor,
+  searchTerm,
+  setSearchTerm,
+}) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
   const [suggestions, setSuggestions] = useState([
@@ -112,7 +117,11 @@ const SearchBar = ({ backgroundColor, showURL, urlColor }) => {
     return () => {
       clearTimeout(handler);
     };
-  }, [searchTerm, suggestions]);
+  }, [searchTerm, suggestions, showURL]);
+
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   const initiateSearch = (searchValue) => {
     searchValue = searchValue.toLowerCase();
@@ -127,6 +136,10 @@ const SearchBar = ({ backgroundColor, showURL, urlColor }) => {
       alert("Please enter a valid search term");
     }
   };
+
+  const displayedValue = showURL
+    ? `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`
+    : searchTerm;
 
   const handleSearch = (e) => {
     if (e) e.preventDefault();
@@ -158,11 +171,6 @@ const SearchBar = ({ backgroundColor, showURL, urlColor }) => {
     setSearchTerm(suggestion);
     setShowSuggestions(false);
     navigate(`/search?query=${encodeURIComponent(suggestion)}`);
-    if (showURL) {
-      setSearchTerm(
-        `https://google.com/search?query=${encodeURIComponent(suggestion)}`
-      );
-    }
   };
 
   return (
@@ -180,8 +188,8 @@ const SearchBar = ({ backgroundColor, showURL, urlColor }) => {
             fontSize: showURL ? "12px" : "16px",
           }}
           type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={displayedValue}
+          onChange={handleInputChange}
           onFocus={() => setShowSuggestions(true)}
           onBlur={() => setTimeout(() => setShowSuggestions(false), 300)}
           placeholder="Search Google or type a URL"

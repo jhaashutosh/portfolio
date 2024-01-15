@@ -8,6 +8,7 @@ import SearchBar from "./SearchBar";
 import Bookmarks from "./Bookmarks";
 import styled from "styled-components";
 import SearchStats from "./SearchStats";
+import { useState } from "react";
 
 const SearchResultsBar = styled.div`
   display: flex;
@@ -32,6 +33,7 @@ const SignInButton = styled.button`
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const renderResults = () => {
     switch (query) {
@@ -50,7 +52,7 @@ const SearchResults = () => {
 
   return (
     <div>
-      <NavBar />
+      <NavBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Bookmarks />
       <SearchResultsBar>
         <div style={{ width: "50%", display: "flex", gap: "24px" }}>
@@ -65,7 +67,12 @@ const SearchResults = () => {
           >
             Google
           </a>
-          <SearchBar backgroundColor="#f1f3f4" />
+          <SearchBar
+            backgroundColor="#f1f3f4"
+            showURL={false}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+          />
         </div>
         <SignInButton>Sign in</SignInButton>
       </SearchResultsBar>
