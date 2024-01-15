@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import SearchBar from "./SearchBar"; // Reuse the SearchBar component
 import SocialMediaBar from "./SocialMediaBar";
@@ -17,20 +17,32 @@ const MiddleContainer = styled.div`
 const SearchBarContainer = styled.div`
   width: 40%;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 70%;
+  }
 `;
 
 const BrandName = styled.h1`
   font-size: 92px;
   color: #4a4a4a;
   margin: 0.2em 0;
+  @media (max-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 const MiddleContent = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <MiddleContainer>
       <BrandName>Ashutosh</BrandName>
       <SearchBarContainer>
-        <SearchBar />
+        <SearchBar
+          backgroundColor="#fff"
+          showURL={false}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
       </SearchBarContainer>
       <SocialMediaBar />
     </MiddleContainer>

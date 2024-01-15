@@ -13,6 +13,9 @@ const FooterContainer = styled.footer`
   bottom: 0;
   width: 100%;
   text-align: center;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const FooterLink = styled.a`
@@ -24,6 +27,9 @@ const FooterLink = styled.a`
   align-items: center;
   justify-content: center;
   cursor: not-allowed;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const Footer = () => {

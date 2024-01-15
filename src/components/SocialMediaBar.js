@@ -1,10 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
+import React from "react";
+import styled from "styled-components";
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const LabelWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 const SocialMediaContainer = styled.div`
   display: flex;
@@ -13,6 +16,9 @@ const SocialMediaContainer = styled.div`
   align-items: center;
   margin-top: 20px;
   gap: 30px;
+  @media (max-width: 768px) {
+    width: 70%;
+  }
 `;
 
 const SocialIconWrapper = styled.a`
@@ -30,31 +36,56 @@ const SocialIconWrapper = styled.a`
   &:hover {
     background: #e8e8e8; // Background color on hover
   }
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 const Icon = styled.div`
   font-size: 25px; // Icon size
   padding-top: 5px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const SocialMediaBar = () => {
   return (
     <SocialMediaContainer>
       <LabelWrapper>
-        <SocialIconWrapper href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
-            <Icon><FaInstagram /></Icon>
+        <SocialIconWrapper
+          href="https://instagram.com/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon>
+            <FaInstagram />
+          </Icon>
         </SocialIconWrapper>
         <p>Instagram</p>
       </LabelWrapper>
       <LabelWrapper>
-        <SocialIconWrapper href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-            <Icon><FaLinkedin /></Icon>
+        <SocialIconWrapper
+          href="https://linkedin.com/in/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon>
+            <FaLinkedin />
+          </Icon>
         </SocialIconWrapper>
         <p>LinkedIn</p>
       </LabelWrapper>
       <LabelWrapper>
-        <SocialIconWrapper href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-            <Icon><FaGithub /></Icon>
+        <SocialIconWrapper
+          href="https://github.com/yourusername"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon>
+            <FaGithub />
+          </Icon>
         </SocialIconWrapper>
         <p>Github</p>
       </LabelWrapper>

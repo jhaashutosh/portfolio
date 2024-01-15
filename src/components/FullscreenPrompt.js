@@ -16,12 +16,13 @@ const Backdrop = styled.div`
 
 const Modal = styled.div`
   background: white;
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1001;
   text-align: center;
   font-family: "Roboto", sans-serif;
+  max-width: 80%;
 `;
 
 const Button = styled.button`
@@ -63,7 +64,13 @@ const CancelButton = styled(Button)`
 
 const ButtonContainer = styled.div`
   display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
   justify-content: space-evenly;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const FullscreenPrompt = ({ onClose }) => {
