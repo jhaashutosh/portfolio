@@ -30,6 +30,7 @@ const AddTabButton = styled.button`
   padding: 6px 8px; // Adjust to match the tab's padding
   cursor: not-allowed;
   font-size: 20px;
+  background: none;
   display: flex;
   align-items: center;
   color: #5f6368;

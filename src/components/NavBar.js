@@ -16,6 +16,10 @@ const NavBarContainer = styled.div`
 const SearchBarContainer = styled.div`
   flex-grow: 1;
   margin: 0 16px;
+  @media (max-width: 768px) {
+    margin: auto;
+    width: 100%;
+  }
 `;
 
 const ProfileIcon = styled.div`
@@ -28,6 +32,9 @@ const ProfileIcon = styled.div`
   border-radius: 50%;
   background-color: black;
   background-size: cover;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavBar = ({ searchTerm, setSearchTerm }) => {

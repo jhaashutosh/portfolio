@@ -6,7 +6,9 @@ import PROJECT_LOGO_1 from "../../assets/portfolio.png";
 
 const ProjectsContainer = styled.div`
   padding: 10px 20px;
-  width: 90%;
+  @media (max-width: 768px) {
+    grid-column: 1 / -1;
+  }
 `;
 
 const Heading = styled.span`
@@ -17,6 +19,9 @@ const HighlightContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack content vertically on small screens
+  }
 `;
 
 const LatestProjectHeader = styled.div`
@@ -24,8 +29,10 @@ const LatestProjectHeader = styled.div`
   font-size: 14px;
   padding: 0px 24px;
   font-weight: 600;
-  width: 100%;
   justify-content: flex-start;
+  @media (max-width: 768px) {
+    font-size: 16px; // Increase font size for readability
+  }
 `;
 
 const LatestProjectText = styled.p`
@@ -37,6 +44,9 @@ const LatestProjectText = styled.p`
   text-align: left;
   align-items: center;
   color: #4d5156;
+  @media (max-width: 768px) {
+    font-size: 14px; // Increase font size for readability
+  }
 `;
 
 const Highlight = styled.div`
@@ -45,13 +55,19 @@ const Highlight = styled.div`
 
 const ProjectItem = styled.div`
   padding: 10px;
+  @media (max-width: 768px) {
+    padding: 5px; // Reduce padding on small screens
+  }
 `;
-
 const ResultHeader = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 10px;
   align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack elements vertically
+    align-items: flex-start;
+  }
 `;
 
 const ResultTitle = styled.a`
@@ -59,6 +75,9 @@ const ResultTitle = styled.a`
   cursor: pointer;
   color: black;
   text-decoration: none;
+  @media (max-width: 768px) {
+    font-size: 16px; // Adjust font size for smaller screens
+  }
 `;
 
 const ResultSnippet = styled.p`
@@ -73,6 +92,16 @@ const FullDescription = styled.p`
   color: #4d5156;
 `;
 
+const DisplayResults = styled.div`
+  display: grid;
+  gap: 100px;
+  grid-template-columns: 3fr 2fr;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+`;
+
 const HighlightSideContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -82,6 +111,10 @@ const HighlightSideContent = styled.div`
   border: 1px solid #dfe1e5;
   width: 80%;
   border-radius: 4px;
+  @media (max-width: 768px) {
+    width: 100%; // Full width on small screens
+    margin-top: 20px; // Add some space above this section on small screens
+  }
 `;
 
 const ProjectLogo = styled.img`
@@ -90,6 +123,10 @@ const ProjectLogo = styled.img`
   border-radius: 50%;
   object-fit: contain;
   margin-right: 10px;
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const ProjectLink = styled.a`
@@ -97,6 +134,16 @@ const ProjectLink = styled.a`
   text-decoration: none;
   font-size: 16px;
   text-decoration: underline;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media (max-width: 400px) {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100px;
+    display: flex;
+  }
 `;
 
 const HighlightContentIMAGE = styled.img`
@@ -167,9 +214,7 @@ asynchronous JavaScript, DOM manipulations, etc.`,
   };
 
   return (
-    <div
-      style={{ display: "grid", gap: "100px", gridTemplateColumns: "3fr 2fr" }}
-    >
+    <DisplayResults>
       <ProjectsContainer>
         <HighlightContent>
           <Highlight>
@@ -272,7 +317,7 @@ asynchronous JavaScript, DOM manipulations, etc.`,
           </span>
         </LatestProjectText>
       </HighlightSideContent>
-    </div>
+    </DisplayResults>
   );
 };
 

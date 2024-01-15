@@ -5,6 +5,9 @@ import ZORP from "../../assets/ZORP.png";
 
 const CareerContainer = styled.div`
   padding: 10px 20px;
+  @media (max-width: 768px) {
+    grid-column: 1 / -1;
+  }
 `;
 
 const LatestCompanyHeader = styled.div`
@@ -12,8 +15,10 @@ const LatestCompanyHeader = styled.div`
   font-size: 14px;
   padding: 0px 24px;
   font-weight: 600;
-  width: 100%;
   justify-content: flex-start;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const Heading = styled.span`
@@ -29,6 +34,9 @@ const LatestCompanyText = styled.p`
   text-align: left;
   align-items: center;
   color: #4d5156;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const HighlightContent = styled.div`
@@ -46,10 +54,17 @@ const HighlightSideContent = styled.div`
   border: 1px solid #dfe1e5;
   width: 80%;
   border-radius: 4px;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 20px;
+  }
 `;
 
 const ResultItem = styled.div`
   padding: 10px;
+  @media (max-width: 768px) {
+    padding: 5px;
+  }
 `;
 
 const ResultHeader = styled.div`
@@ -57,11 +72,18 @@ const ResultHeader = styled.div`
   justify-content: flex-start;
   gap: 10px;
   align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const ResultTitle = styled.a`
   margin: 0;
   cursor: pointer;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const ResultSnippet = styled.p`
@@ -70,6 +92,9 @@ const ResultSnippet = styled.p`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const Logo = styled.img`
@@ -78,11 +103,17 @@ const Logo = styled.img`
   border-radius: 50%;
   object-fit: contain;
   margin-right: 10px;
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const Highlight = styled.div`
-  /* background-color: #f8f9fa; */
   margin-bottom: 30px;
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const HighlightContentIMAGE = styled.img`
@@ -93,6 +124,16 @@ const HighlightContentIMAGE = styled.img`
 
 const FullDescription = styled.p`
   color: #4d5156;
+`;
+
+const DisplayResults = styled.div`
+  display: grid;
+  gap: 100px;
+  grid-template-columns: 3fr 2fr;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 `;
 
 const Career = () => {
@@ -174,9 +215,7 @@ validating routes and requests.`,
   };
 
   return (
-    <div
-      style={{ display: "grid", gap: "100px", gridTemplateColumns: "3fr 2fr" }}
-    >
+    <DisplayResults>
       <CareerContainer>
         <HighlightContent>
           <Highlight>
@@ -273,7 +312,7 @@ validating routes and requests.`,
           </span>
         </LatestCompanyText>
       </HighlightSideContent>
-    </div>
+    </DisplayResults>
   );
 };
 

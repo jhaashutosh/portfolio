@@ -16,6 +16,13 @@ const SearchResultsBar = styled.div`
   gap: 24px;
   justify-content: space-between;
   border-bottom: 1px solid #dfe1e5;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+  }
 `;
 
 const SignInButton = styled.button`
@@ -28,6 +35,28 @@ const SignInButton = styled.button`
   background: #fff;
   border: 0.5px solid #5f6368;
   color: #5f6368;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const ResultsContainer = styled.div`
+  width: 50%;
+  display: flex;
+  gap: 24px;
+  @media (max-width: 768px) {
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+const SearchResultsContainer = styled.div`
+  padding: 20px 72px;
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 const SearchResults = () => {
@@ -55,7 +84,7 @@ const SearchResults = () => {
       <NavBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Bookmarks />
       <SearchResultsBar>
-        <div style={{ width: "50%", display: "flex", gap: "24px" }}>
+        <ResultsContainer>
           <a
             href="http://localhost:3000/"
             style={{
@@ -73,13 +102,13 @@ const SearchResults = () => {
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
           />
-        </div>
+        </ResultsContainer>
         <SignInButton>Sign in</SignInButton>
       </SearchResultsBar>
       <SearchStats />
-      <div className="search-results" style={{ padding: "20px 72px" }}>
+      <SearchResultsContainer className="search-results">
         {renderResults()}
-      </div>
+      </SearchResultsContainer>
     </div>
   );
 };

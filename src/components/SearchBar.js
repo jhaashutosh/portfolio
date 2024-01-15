@@ -9,6 +9,10 @@ const SearchWrapper = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
+
+  @media (max-width: 768px) {
+    margin: auto;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -22,29 +26,45 @@ const StyledForm = styled.form`
   width: 100%;
   border-bottom: ${({ $isMenuOpen }) =>
     $isMenuOpen ? "none" : "1px solid #dfe1e5"};
+
+  @media (max-width: 768px) {
+    width: 100%; // Ensure the form takes full width on small screens
+    padding: 8px; // Adjust padding
+  }
 `;
 
 const StyledInput = styled.input`
   width: 100%;
   border: none;
   padding-left: 35px;
-  font-size: 16px;
+  font-size: ${({ $showURL }) => ($showURL ? "12px" : "16px")};
   &:focus {
     outline: none;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding-left: 0px 25px;
   }
 `;
 
 const MicIcon = styled(FiMic)`
   position: absolute;
-  font-size: 20px;
+  font-size: 14px;
   right: 20px;
   cursor: pointer;
+  @media (max-width: 768px) {
+    font-size: 12px; // Reduce icon size on smaller screens
+  }
 `;
 
 const SearchIcon = styled(FiSearch)`
   position: absolute;
   font-size: 20px;
   left: 20px;
+  @media (max-width: 768px) {
+    font-size: 14px; // Reduce icon size on smaller screens
+  }
 `;
 
 const SuggestionIcon = styled(FiClock)`
@@ -69,6 +89,10 @@ const SuggestionsBox = styled.div`
   padding: 0;
   margin-top: -5px;
   max-height: 200px;
+  @media (max-width: 768px) {
+    max-height: 150px; // Adjust max height for mobile devices
+    overflow-y: auto; // Ensure scrollability
+  }
 `;
 
 const SuggestionItem = styled.div`
@@ -180,12 +204,12 @@ const SearchBar = ({
         $isMenuOpen={isMenuOpen}
         onSubmit={handleSearch}
       >
-        <SearchIcon />
+        <SearchIcon style={{ color: urlColor, marginRight: "5px" }} />
         <StyledInput
+          $showURL={showURL}
           style={{
             backgroundColor: backgroundColor,
             color: urlColor,
-            fontSize: showURL ? "12px" : "16px",
           }}
           type="text"
           value={displayedValue}

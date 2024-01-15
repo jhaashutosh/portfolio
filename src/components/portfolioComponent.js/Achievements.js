@@ -5,6 +5,9 @@ import ACHIEVEMENT_IMAGE from "../../assets/gfg_achievement.png";
 
 const AchievementsContainer = styled.div`
   padding: 10px 20px;
+  @media (max-width: 768px) {
+    grid-column: 1 / -1;
+  }
 `;
 
 const AchievementLogo = styled.img`
@@ -13,12 +16,19 @@ const AchievementLogo = styled.img`
   border-radius: 50%;
   object-fit: contain;
   margin-right: 10px;
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const HighlightContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const LatestAchievementHeader = styled.div`
@@ -26,8 +36,10 @@ const LatestAchievementHeader = styled.div`
   font-size: 14px;
   padding: 0px 24px;
   font-weight: 600;
-  width: 100%;
   justify-content: flex-start;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const LatestAchievementText = styled.p`
@@ -39,6 +51,9 @@ const LatestAchievementText = styled.p`
   text-align: left;
   align-items: center;
   color: #4d5156;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const Highlight = styled.div`
@@ -48,23 +63,43 @@ const Highlight = styled.div`
 
 const Link = styled.a`
   color: #1a0dab;
+  text-decoration: none;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media (max-width: 400px) {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100px;
+    display: flex;
+  }
 `;
 
 const AchievementItem = styled.div`
   padding: 10px;
+  @media (max-width: 768px) {
+    padding: 5px;
+  }
 `;
 
 const ResultHeader = styled.div`
   display: flex;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 10 px;
   align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const ResultTitle = styled.p`
   margin: 0;
   color: black;
-  cursor: pointer;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const ResultSnippet = styled.p`
@@ -72,10 +107,27 @@ const ResultSnippet = styled.p`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+const DisplayResults = styled.div`
+  display: grid;
+  gap: 100px;
+  grid-template-columns: 3fr 2fr;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 `;
 
 const FullDescription = styled.p`
   color: #4d5156;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const HighlightSideContent = styled.div`
@@ -87,6 +139,10 @@ const HighlightSideContent = styled.div`
   border: 1px solid #dfe1e5;
   width: 80%;
   border-radius: 4px;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 20px;
+  }
 `;
 
 const Achievements = () => {
@@ -138,9 +194,7 @@ contributions`,
   };
 
   return (
-    <div
-      style={{ display: "grid", gap: "100px", gridTemplateColumns: "3fr 2fr" }}
-    >
+    <DisplayResults>
       <AchievementsContainer>
         <HighlightContent>
           <Highlight>
@@ -215,7 +269,7 @@ contributions`,
           advanced algorithms.
         </LatestAchievementText>
       </HighlightSideContent>
-    </div>
+    </DisplayResults>
   );
 };
 

@@ -7,7 +7,12 @@ const BookmarksContainer = styled.div`
   justify-content: flex-start;
   padding: 0 1rem;
   padding-bottom: 0.5rem;
-  /* background-color: #f1f3f4; */
+
+  @media (max-width: 768px) {
+    justify-content: center; // Center the bookmarks on smaller screens
+    flex-wrap: wrap; // Allow bookmarks to wrap to the next line
+    padding: 0.5rem; // Reduce padding
+  }
 `;
 
 const Bookmark = styled.div`
@@ -15,8 +20,14 @@ const Bookmark = styled.div`
   color: #5f6368;
   text-decoration: none;
   cursor: pointer;
+
   &:hover {
     text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    margin: 0.5rem; // Reduce margin
+    font-size: 14px; // Optionally reduce font size
   }
 `;
 

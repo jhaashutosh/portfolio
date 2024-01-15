@@ -6,6 +6,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const NavButtonContainer = styled.div`
   display: flex;
+
+  @media (max-width: 768px) {
+    justify-content: space-around;
+  }
 `;
 
 const IconButton = styled.button`
@@ -20,6 +24,9 @@ const IconButton = styled.button`
   justify-content: center;
   &:focus {
     outline: none;
+  }
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 

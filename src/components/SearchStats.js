@@ -6,6 +6,9 @@ const StatsContainer = styled.div`
   color: #70757a;
   font-size: 14px;
   margin-left: 72px;
+  @media (max-width: 768px) {
+    margin: auto;
+  }
 `;
 
 const SearchStats = () => {

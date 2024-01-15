@@ -5,11 +5,17 @@ import samLogo from "../../assets/download.jpeg";
 
 const EducationContainer = styled.div`
   padding: 10px 20px;
+  @media (max-width: 768px) {
+    grid-column: 1 / -1;
+  }
 `;
 
 const Heading = styled.span`
   font-weight: 500;
   color: #4d5156;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const ExpandButton = styled(ExpandIcon)`
@@ -21,6 +27,9 @@ const ExtendedDetails = styled.div`
   color: #4d5156;
   margin-top: 10px;
   display: ${({ show }) => (show ? "block" : "none")};
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const EducationLogo = styled.img`
@@ -29,10 +38,17 @@ const EducationLogo = styled.img`
   border-radius: 50%;
   object-fit: contain;
   margin-right: 10px;
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const EducationItem = styled.div`
   padding: 10px;
+  @media (max-width: 768px) {
+    padding: 5px;
+  }
 `;
 
 const ResultHeader = styled.div`
@@ -43,6 +59,11 @@ const ResultHeader = styled.div`
   font-weight: bold;
   color: black;
   margin-bottom: 20px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 16px;
+  }
 `;
 
 const ResultTitle = styled.p`
@@ -50,12 +71,18 @@ const ResultTitle = styled.p`
   cursor: pointer;
   font-weight: 500;
   font-size: 16px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const ResultSnippet = styled.div`
   color: #4d5156;
   font-size: 16px;
   margin-top: 5px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const Highlight = styled.div`
@@ -67,6 +94,9 @@ const HighlightHeader = styled.div`
   font-size: 14px;
   padding: 0px 24px;
   font-weight: 600;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const HighlightText = styled.p`
@@ -78,12 +108,28 @@ const HighlightText = styled.p`
   text-align: left;
   align-items: center;
   color: #4d5156;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const HighlightContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const DisplayResults = styled.div`
+  display: grid;
+  gap: 100px;
+  grid-template-columns: 3fr 2fr;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 `;
 
 const EducationSideContent = styled.div`
@@ -95,10 +141,17 @@ const EducationSideContent = styled.div`
   border: 1px solid #dfe1e5;
   width: 80%;
   border-radius: 4px;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 20px;
+  }
 `;
 
 const Link = styled.a`
   color: #1a0dab;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const Education = () => {
@@ -157,9 +210,7 @@ const Education = () => {
   ];
 
   return (
-    <div
-      style={{ display: "grid", gap: "100px", gridTemplateColumns: "3fr 2fr" }}
-    >
+    <DisplayResults>
       <EducationContainer>
         <HighlightContent>
           <Highlight>
@@ -237,7 +288,7 @@ const Education = () => {
           of 9.23, participating in various tech events and projects.
         </HighlightText>
       </EducationSideContent>
-    </div>
+    </DisplayResults>
   );
 };
 
