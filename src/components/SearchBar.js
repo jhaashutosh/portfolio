@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FiSearch, FiClock, FiMic } from "react-icons/fi";
+import { FiMicOff } from "react-icons/fi";
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -128,6 +129,8 @@ const SearchBar = ({
   ]);
   const isMenuOpen = showSuggestions && suggestions.length > 0;
 
+  const [isMicActive, setIsMicActive] = useState(false);
+
   useEffect(() => {
     const handler = setTimeout(() => {
       const filteredSuggestions = suggestions.filter((suggestion) =>
@@ -178,14 +181,31 @@ const SearchBar = ({
       recognition.lang = "en-US";
       recognition.start();
 
+      setIsMicActive(true); // Set microphone to active
+
       recognition.onresult = (event) => {
         const speechResult = event.results[0][0].transcript;
         setSearchTerm(speechResult);
+        setIsMicActive(false); // Turn off the microphone active status
+      };
+
+      recognition.onspeechend = () => {
+        recognition.stop();
+        setIsMicActive(false); // Turn off the microphone on speech end
       };
 
       recognition.onerror = (event) => {
         console.error("Speech recognition error", event.error);
+        setIsMicActive(false); // Turn off the microphone on error
       };
+
+      // Optional: Set a timeout to turn off the microphone if no speech is detected
+      setTimeout(() => {
+        if (isMicActive) {
+          recognition.stop();
+          setIsMicActive(false);
+        }
+      }, 10000); // 10 seconds timeout
     } else {
       console.log("Your browser does not support speech recognition.");
     }
@@ -231,6 +251,19 @@ const SearchBar = ({
             </SuggestionItem>
           ))}
         </SuggestionsBox>
+      )}
+      {isMicActive && (
+        <div
+          style={{
+            position: "absolute",
+            top: "100%",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          <p>Listening...</p>
+          {/* Or use an icon like <FiMicOff /> */}
+        </div>
       )}
     </SearchWrapper>
   );

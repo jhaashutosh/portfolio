@@ -55,7 +55,7 @@ const SocialMediaBar = () => {
     <SocialMediaContainer>
       <LabelWrapper>
         <SocialIconWrapper
-          href="https://instagram.com/yourusername"
+          href="https://instagram.com/jhaashutosh58/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -67,7 +67,7 @@ const SocialMediaBar = () => {
       </LabelWrapper>
       <LabelWrapper>
         <SocialIconWrapper
-          href="https://linkedin.com/in/yourusername"
+          href="https://www.linkedin.com/in/ashutosh-kumar-j-9904a0118/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -79,7 +79,7 @@ const SocialMediaBar = () => {
       </LabelWrapper>
       <LabelWrapper>
         <SocialIconWrapper
-          href="https://github.com/yourusername"
+          href="https://github.com/jhaashutosh"
           target="_blank"
           rel="noopener noreferrer"
         >
