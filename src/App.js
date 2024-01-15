@@ -13,11 +13,16 @@ function App() {
     setShowPrompt(false);
   };
 
+  // Use a media query to conditionally hide the FullscreenPrompt on screens smaller than 768px
+  const hidePromptOnSmallScreens = window.innerWidth < 768;
+
   return (
     <Router>
       <div className="App">
         <TabsBar />
-        {showPrompt && <FullscreenPrompt onClose={handleClose} />}
+        {!hidePromptOnSmallScreens && showPrompt && (
+          <FullscreenPrompt onClose={handleClose} />
+        )}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchResults />} />
