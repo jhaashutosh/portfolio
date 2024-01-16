@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FiSearch, FiClock, FiMic } from "react-icons/fi";
+import SpeechRecognitionModal from "./SpeechRecognitionModal";
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -28,8 +29,8 @@ const StyledForm = styled.form`
     $isMenuOpen ? "none" : "1px solid #dfe1e5"};
 
   @media (max-width: 768px) {
-    width: 100%; // Ensure the form takes full width on small screens
-    padding: 8px; // Adjust padding
+    width: 100%;
+    padding: 8px;
   }
 `;
 
@@ -54,7 +55,7 @@ const MicIcon = styled(FiMic)`
   right: 20px;
   cursor: pointer;
   @media (max-width: 768px) {
-    font-size: 12px; // Reduce icon size on smaller screens
+    font-size: 12px;
   }
 `;
 
@@ -63,7 +64,7 @@ const SearchIcon = styled(FiSearch)`
   font-size: 20px;
   left: 20px;
   @media (max-width: 768px) {
-    font-size: 14px; // Reduce icon size on smaller screens
+    font-size: 14px;
   }
 `;
 
@@ -90,8 +91,8 @@ const SuggestionsBox = styled.div`
   margin-top: -5px;
   max-height: 200px;
   @media (max-width: 768px) {
-    max-height: 150px; // Adjust max height for mobile devices
-    overflow-y: auto; // Ensure scrollability
+    max-height: 150px;
+    overflow-y: auto;
   }
 `;
 
@@ -130,6 +131,7 @@ const SearchBar = ({
   const isMenuOpen = showSuggestions && suggestions.length > 0;
 
   const [isMicActive, setIsMicActive] = useState(false);
+  const speechRecognitionRef = useRef(null);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -185,9 +187,10 @@ const SearchBar = ({
     if (SpeechRecognition) {
       const recognition = new SpeechRecognition();
       recognition.lang = "en-US";
+      speechRecognitionRef.current = recognition;
       recognition.start();
 
-      setIsMicActive(true); // Set microphone to active
+      setIsMicActive(true);
 
       recognition.onresult = (event) => {
         const speechResult = event.results[0][0].transcript;
@@ -215,6 +218,13 @@ const SearchBar = ({
     } else {
       console.log("Your browser does not support speech recognition.");
     }
+  };
+
+  const handleCloseModal = () => {
+    if (speechRecognitionRef.current) {
+      speechRecognitionRef.current.stop(); // Stop the recognition process
+    }
+    setIsMicActive(false);
   };
 
   const handleSuggestionClick = (suggestion) => {
@@ -245,6 +255,13 @@ const SearchBar = ({
           placeholder="Search Google or type a URL"
         />
         <MicIcon onClick={handleStartSpeechRecognition} />
+        {isMicActive && (
+          <SpeechRecognitionModal
+            isMicActive={isMicActive}
+            onClose={handleCloseModal}
+            setIsMicActive={setIsMicActive}
+          />
+        )}
       </StyledForm>
       {isMenuOpen && (
         <SuggestionsBox>

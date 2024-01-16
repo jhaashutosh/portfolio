@@ -59,18 +59,6 @@ const SideDetail = styled.p`
   }
 `;
 
-// const DetailSection = styled.div`
-//   background-color: #f9f9f9;
-//   border: 1px solid #dfe1e5;
-//   border-radius: 8px;
-//   padding: 20px;
-//   width: 100%;
-//   max-width: 600px;
-//   @media (max-width: 768px) {
-//     padding: 15px;
-//   }
-// `;
-
 const Detail = styled.p`
   display: flex;
   font-size: 18px;
@@ -115,7 +103,7 @@ const SearchResultLogo = styled.img`
   }
 `;
 
-const ResultTitle = styled.a`
+const ResultTitle = styled.span`
   margin: 0;
   cursor: pointer;
   @media (max-width: 768px) {

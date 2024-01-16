@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import NavigationButtons from "./NavigationButtons"; // Assuming you have this component
 import SearchBar from "./SearchBar"; // Assuming you have this component
-import { FaUser } from "react-icons/fa";
+// import { FaUser } from "react-icons/fa";
+import profilePic from "../assets/Ashutosh_jha_profile_pic-removebg-preview.png";
 
 const NavBarContainer = styled.div`
   display: flex;
@@ -23,18 +24,25 @@ const SearchBarContainer = styled.div`
 `;
 
 const ProfileIcon = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   font-size: 12px;
   justify-content: center;
   border-radius: 50%;
-  background-color: black;
+  background-color: #000;
   background-size: cover;
   @media (max-width: 768px) {
     display: none;
   }
+`;
+
+const ProfileImage = styled.img`
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 50%;
 `;
 
 const NavBar = ({ searchTerm, setSearchTerm }) => {
@@ -51,7 +59,7 @@ const NavBar = ({ searchTerm, setSearchTerm }) => {
         />
       </SearchBarContainer>
       <ProfileIcon>
-        <FaUser color="white" />
+        <ProfileImage src={profilePic} alt="Profile" />
       </ProfileIcon>
     </NavBarContainer>
   );
