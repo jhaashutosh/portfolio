@@ -280,7 +280,7 @@ const Education = () => {
             alt="Achievement"
             style={{ borderRadius: "4px", width: "100%" }}
           />
-          <HighlightHeader>GFG - 100+ days streak</HighlightHeader>
+          <HighlightHeader>MAIT - 2020-2024</HighlightHeader>
         </div>
         <HighlightText>
           B.Tech in Computer Science Engineering with a focus on software
