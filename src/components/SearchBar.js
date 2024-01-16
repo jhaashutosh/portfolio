@@ -82,7 +82,7 @@ const SuggestionsBox = styled.div`
   right: 0;
   background: white;
   border: 1px solid #dfe1e5;
-  border-radius: 0 0 24px 24px;
+  border-radius: 0 0 16px 16px;
   border-top: none;
   display: flex;
   justify-content: center;
@@ -106,8 +106,8 @@ const SuggestionItem = styled.div`
   align-items: center;
   &:hover {
     background-color: #eeeeee;
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
   }
 `;
 
