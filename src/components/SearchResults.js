@@ -89,7 +89,7 @@ const SearchResults = () => {
       <SearchResultsBar>
         <ResultsContainer>
           <a
-            href="http://localhost:3000/"
+            href="https://ashutosh-kumar-jha.netlify.app/"
             style={{
               fontSize: "28px",
               fontWeight: "600",
